@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	reader := Reader.NewReaderController("logs/qgames.log")
+	reader := Reader.NewReaderController("logs/qgames.log") // Create a new reader controller
 
-	games := reader.FindTheGames()
+	games := reader.FindTheGames() // Find the games inside the log file
 
-	reports := reader.GetTheReports(games)
+	reports := reader.GetTheReports(games) // Get the report about each game
 	for i := 1; i < len(reports)+1; i++ {
 		game_name := fmt.Sprintf("game_%d", i)
 		marshalled, _ := json.Marshal(reports[game_name])
@@ -21,7 +21,7 @@ func main() {
 
 	fmt.Println()
 
-	deaths_causes := reader.GetTheDeathsCauses(games)
+	deaths_causes := reader.GetTheDeathsCauses(games) // Get the death causes about each game
 	for i := 1; i < len(deaths_causes)+1; i++ {
 		game_name := fmt.Sprintf("game_%d", i)
 		marshalled, _ := json.Marshal(deaths_causes[game_name])
